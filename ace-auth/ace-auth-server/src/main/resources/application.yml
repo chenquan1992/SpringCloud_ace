@@ -7,7 +7,8 @@ spring:
         default-property-inclusion: non_null
     redis:
         database: 2
-        host: ${REDIS_HOST:localhost}
+        host: ${REDIS_HOST:192.168.3.3}
+        password: xianhan!@#
         port: ${REDIS_PORT:6379}
         pool:
         max-active: 20

@@ -57,12 +57,12 @@ spring:
        routes:
         # =====================================
         - id: ace-auth
-          uri: lb://ace-auth
+          uri: lb://ace-auth     #指向注册中心的服务，使用lb:// 加上ServiceName，当然也可以通过http://localhost:8080指向
           order: 8000
           predicates:
           - Path=/api/auth/**
           filters:
-          - StripPrefix=2
+          - StripPrefix=2     # 看单词的意思，从前面截取一个，实际上就是截取url，本例中就是会把/api/auth（这是两个）截掉，后面的部分才是转发的url
         - id: ace-admin
           uri: lb://ace-admin
           order: 8001

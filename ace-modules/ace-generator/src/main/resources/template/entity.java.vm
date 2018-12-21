@@ -3,6 +3,8 @@ package ${package}.entity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
+import lombok.Data;
+import io.swagger.annotations.ApiModel;
 #if(${hasBigDecimal})
 import java.math.BigDecimal;
 #end
@@ -15,24 +17,26 @@ import java.math.BigDecimal;
  * @email ${email}
  * @date ${datetime}
  */
+@ApiModel
+@Data
 @Table(name = "${tableName}")
 public class ${className} implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 #foreach ($column in $columns)
-	#if($column.columnName == $pk.columnName)
-    //$column.comments
+#if($column.columnName == $pk.columnName)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private $column.attrType $column.attrname;
-	#else
-    //$column.comments
+#else
+    @ApiModelProperty("$column.comments")
     @Column(name = "$column.columnName")
     private $column.attrType $column.attrname;
-	#end
+#end
 
 #end
 
-#foreach ($column in $columns)
+#*#foreach ($column in $columns)
 	/**
 	 * 设置：${column.comments}
 	 */
@@ -45,5 +49,5 @@ public class ${className} implements Serializable {
 	public $column.attrType get${column.attrName}() {
 		return $column.attrname;
 	}
-#end
+#end*#
 }

@@ -15,7 +15,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 @EnableFeignClients
 @MapperScan("com.github.wxiaoqi.security.auth.mapper")
-@EnableAutoConfiguration
+@EnableAutoConfiguration//启用自动配置
 public class AuthBootstrap {
     public static void main(String[] args) {
         SpringApplication.run(AuthBootstrap.class, args);
