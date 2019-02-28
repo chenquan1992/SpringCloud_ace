@@ -1,0 +1,4 @@
+spring:
+  build: ./webapp
+  ports:
+   - "80:8085"

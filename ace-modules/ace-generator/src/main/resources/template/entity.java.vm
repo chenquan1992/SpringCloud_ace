@@ -5,6 +5,11 @@ import java.util.Date;
 import javax.persistence.*;
 import lombok.Data;
 import io.swagger.annotations.ApiModel;
+
+import com.ptshop.model.PageDto;
+import io.swagger.annotations.ApiModelProperty;
+
+
 #if(${hasBigDecimal})
 import java.math.BigDecimal;
 #end
@@ -20,7 +25,7 @@ import java.math.BigDecimal;
 @ApiModel
 @Data
 @Table(name = "${tableName}")
-public class ${className} implements Serializable {
+public class ${className} extends PageDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 #foreach ($column in $columns)

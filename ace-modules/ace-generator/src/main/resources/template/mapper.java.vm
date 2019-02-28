@@ -1,8 +1,8 @@
 package ${package}.mapper;
 
 import java.util.List;
-import java.util.Map;
-
+import com.ptshop.util.MyMapper;
+import com.ptshop.model.banner.${className};
 /**
  * ${comments}
  * 
@@ -15,6 +15,6 @@ public interface ${className}Mapper extends MyMapper<${className}> {
     /**
     * 根据条件查询，主键倒序排序
     */
-    List<${className}> selectByQuery(Map<String, Object> map);
+    List<${className}> selectByQuery(${className} ${classname});
 
 }
